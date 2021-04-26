@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="642.0" prefWidth="956.0"
+            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="NamedEntityRecognition.Controllers.MainWindowController">
+    <children>
+        <Pane prefHeight="642.0" prefWidth="278.0" style="-fx-background-color: #fbf9f8;">
+            <children>
+                <Label fx:id="labelPERFile" alignment="CENTER" layoutX="43.0" layoutY="58.0" prefHeight="17.0"
+                       prefWidth="191.0" textFill="RED"/>
+                <JFXButton fx:id="buttonChoosePERFile" layoutX="94.0" layoutY="85.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#fbf9f8"
+                           style="-fx-background-color: #32aa9f;" text="PER File" textFill="WHITE"/>
+                <Label fx:id="labelORGFile" alignment="CENTER" layoutX="43.0" layoutY="125.0" prefHeight="17.0"
+                       prefWidth="191.0" textFill="RED"/>
+                <JFXButton fx:id="buttonChooseORGFile" layoutX="94.0" layoutY="152.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#fbf9f8"
+                           style="-fx-background-color: #32aa9f;" text="ORG File" textFill="WHITE"/>
+                <Label fx:id="labelLOCFile" alignment="CENTER" layoutX="43.0" layoutY="192.0" prefHeight="17.0"
+                       prefWidth="191.0" textFill="RED"/>
+                <JFXButton fx:id="buttonChooseLOCFile" layoutX="94.0" layoutY="219.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#fbf9f8"
+                           style="-fx-background-color: #32aa9f;" text="LOC File" textFill="WHITE"/>
+                <Label fx:id="labelMISCFile" alignment="CENTER" layoutX="43.0" layoutY="259.0" prefHeight="17.0"
+                       prefWidth="191.0" textFill="RED"/>
+                <JFXButton fx:id="buttonChooseMISCFile" layoutX="94.0" layoutY="286.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#fbf9f8"
+                           style="-fx-background-color: #32aa9f;" text="MISC File" textFill="WHITE"/>
+                <Label fx:id="labelOTHERFile" alignment="CENTER" layoutX="43.0" layoutY="326.0" prefHeight="17.0"
+                       prefWidth="191.0" textFill="RED"/>
+                <JFXButton fx:id="buttonChooseOtherFile" layoutX="94.0" layoutY="353.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#fbf9f8"
+                           style="-fx-background-color: #32aa9f;" text="Other File" textFill="WHITE"/>
+                <Label fx:id="labelTestFile" alignment="CENTER" layoutX="43.0" layoutY="393.0" prefHeight="17.0"
+                       prefWidth="191.0" textFill="RED"/>
+                <JFXButton fx:id="buttonChooseTestFile" layoutX="94.0" layoutY="420.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#fbf9f8"
+                           style="-fx-background-color: #32aa9f;" text="Test File" textFill="WHITE"/>
+                <Label fx:id="labelClassify" alignment="CENTER" layoutX="43.0" layoutY="460.0" prefHeight="17.0"
+                       prefWidth="191.0" textFill="RED"/>
+                <JFXButton fx:id="buttonClassify" layoutX="79.0" layoutY="487.0" prefHeight="45.0" prefWidth="120.0" ripplerFill="#fbf9f8"
+                           onAction="#classification_vis" style="-fx-background-color: #32aa9f;" text="Classify" textFill="WHITE"/>
+                <JFXButton fx:id="buttonClear" layoutX="42.0" layoutY="547.0" prefHeight="45.0" prefWidth="78.0" ripplerFill="#fbf9f8"
+                           onAction="#clearFields" style="-fx-background-color: #32aa9f;" text="Clear" textFill="WHITE"/>
+                <JFXButton fx:id="buttonExit" layoutX="155.0" layoutY="547.0" prefHeight="45.0" prefWidth="78.0" ripplerFill="#fbf9f8"
+                           onAction="#exitButtonAction" style="-fx-background-color: #32aa9f;" text="Exit" textFill="WHITE"/>
+            </children>
+        </Pane>
+        <Pane layoutX="278.0" prefHeight="642.0" prefWidth="500.0">
+            <children>
+                <BarChart fx:id="barChart" layoutX="40.0" layoutY="121.0" prefHeight="400.0" prefWidth="420.0"
+                          style="-fx-background-color: #ffffff;">
+                    <xAxis>
+                        <CategoryAxis label="Classification of Named Entities" side="BOTTOM" fx:id="xAxis"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="Names" side="LEFT"/>
+                    </yAxis>
+                </BarChart>
+            </children>
+        </Pane>
+        <Pane layoutX="778.0" prefHeight="642.0" prefWidth="278.0" style="-fx-background-color: #fbf9f8;">
+            <children>
+                <JFXTextField fx:id="txtRecall" alignment="CENTER" editable="false" focusColor="#32aa9f"
+                              labelFloat="true" layoutX="42.0" layoutY="53.0" prefHeight="25.0" prefWidth="191.0"
+                              promptText="Recall"/>
+                <JFXTextField fx:id="txtPrecision" alignment="CENTER" editable="false" focusColor="#32aa9f"
+                              labelFloat="true" layoutX="42.0" layoutY="100.0" prefHeight="25.0" prefWidth="191.0"
+                              promptText="Precision"/>
+                <JFXTextField fx:id="txtFMeasure" alignment="CENTER" editable="false" focusColor="#32aa9f"
+                              labelFloat="true" layoutX="42.0" layoutY="147.0" prefHeight="25.0" prefWidth="191.0"
+                              promptText="F-Measure"/>
+
+                <JFXTextField fx:id="txtTruePositives" alignment="CENTER" editable="false" focusColor="#32aa9f"
+                              labelFloat="true" layoutX="42.0" layoutY="230.0" prefHeight="25.0" prefWidth="191.0"
+                              promptText="True Positives"/>
+                <JFXTextField fx:id="txtTrueNegatives" alignment="CENTER" editable="false" focusColor="#32aa9f"
+                              labelFloat="true" layoutX="42.0" layoutY="277.0" prefHeight="25.0" prefWidth="191.0"
+                              promptText="True Negatives"/>
+                <JFXTextField fx:id="txtFalsePositives" alignment="CENTER" editable="false" focusColor="#32aa9f"
+                              labelFloat="true" layoutX="42.0" layoutY="324.0" prefHeight="25.0" prefWidth="191.0"
+                              promptText="False Positives"/>
+                <JFXTextField fx:id="txtFalseNegatives" alignment="CENTER" editable="false" focusColor="#32aa9f"
+                              labelFloat="true" layoutX="42.0" layoutY="371.0" prefHeight="25.0" prefWidth="191.0"
+                              promptText="False Negatives"/>
+                <ImageView fitHeight="59.0" fitWidth="222.0" layoutX="28.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/NamedEntityRecognition/Resources/images/logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
+
+        <!--
+        <?xml version="1.0" encoding="UTF-8"?>
+
+        <?import com.jfoenix.controls.JFXButton?>
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.image.Image?>
+        <?import javafx.scene.image.ImageView?>
+        <?import javafx.scene.layout.AnchorPane?>
+        <?import javafx.scene.layout.Pane?>
+        <?import javafx.scene.text.Font?>
+
+        <AnchorPane id="AnchorPane" prefHeight="76.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication6.Controllers.MainWindowController">
+           <children>
+              <Pane prefHeight="76.0" prefWidth="900.0">
+                 <children>
+                    <ImageView fitHeight="59.0" fitWidth="222.0" layoutX="12.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                          <Image url="@../images/logo.png" />
+                       </image>
+                    </ImageView>
+                    <Label layoutX="289.0" layoutY="14.0" text="Welcome, " />
+                    <Label fx:id="nameLabel" layoutX="229.0" layoutY="31.0" prefHeight="36.0" prefWidth="175.0" text="Gépészmérnöki és Informatikai Kar" textAlignment="CENTER" wrapText="true">
+                       <font>
+                          <Font name="Comic Sans MS Bold" size="12.0" />
+                       </font></Label>
+                    <JFXButton layoutX="417.0" layoutY="13.0"  prefHeight="51.0" prefWidth="83.0" onAction="#buttonHomeAction" ripplerFill="#fbf9f8" style="-fx-background-color: #32aa9f;" text="Home" textAlignment="CENTER" textFill="WHITE">
+                       <font>
+                          <Font name="System Bold" size="13.0" />
+                       </font>
+                    </JFXButton>
+                    <JFXButton layoutX="509.0" layoutY="13.0"  prefHeight="51.0" prefWidth="99.0" onAction="#buttonClassificationAction" ripplerFill="#fbf9f8" style="-fx-background-color: #32aa9f;" text="Classification" textAlignment="CENTER" textFill="WHITE">
+                       <font>
+                          <Font name="System Bold" size="13.0" />
+                       </font>
+                    </JFXButton>
+                    <JFXButton layoutX="618.0" layoutY="13.0"  prefHeight="51.0" prefWidth="83.0" onAction="#buttonEvaluationAction" ripplerFill="#fbf9f8" style="-fx-background-color: #32aa9f;" text="Evaluation" textAlignment="CENTER" textFill="WHITE">
+                       <font>
+                          <Font name="System Bold" size="13.0" />
+                       </font>
+                    </JFXButton>
+                    <JFXButton layoutX="711.0" layoutY="13.0"  prefHeight="51.0" prefWidth="83.0" onAction="#buttonAboutAction" ripplerFill="#fbf9f8" style="-fx-background-color: #32aa9f;" text="About" textAlignment="CENTER" textFill="WHITE">
+                       <font>
+                          <Font name="System Bold" size="13.0" />
+                       </font>
+                    </JFXButton>
+                    <JFXButton layoutX="803.0" layoutY="13.0"  prefHeight="51.0" prefWidth="83.0" onAction="#exitButtonAction" ripplerFill="#fbf9f8" style="-fx-background-color: #32aa9f;" text="Exit" textAlignment="CENTER" textFill="WHITE">
+                       <font>
+                          <Font name="System Bold" size="13.0" />
+                       </font>
+                    </JFXButton>
+                 </children>
+              </Pane>
+           </children>
+        </AnchorPane>
+        -->
+
